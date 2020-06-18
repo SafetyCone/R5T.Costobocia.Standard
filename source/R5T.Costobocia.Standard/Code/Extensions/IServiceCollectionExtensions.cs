@@ -17,7 +17,7 @@ namespace R5T.Costobocia.Standard
         /// </summary>
         public static IServiceCollection AddOrganizationDirectoryNameProvider(this IServiceCollection services)
         {
-            services.AddDefaultOrganizationDirectoryNameProvider();
+            R5T.Costobocia.Default.IServiceCollectionExtensions.AddOrganizationDirectoryNameProvider(services);
 
             return services;
         }
@@ -36,7 +36,7 @@ namespace R5T.Costobocia.Standard
         /// </summary>
         public static IServiceCollection AddOrganizationsStringlyTypedPathOperator(this IServiceCollection services)
         {
-            services.AddDefaultOrganizationsStringlyTypedPathOperator(
+            services.AddOrganizationsStringlyTypedPathOperator(
                 services.AddStringlyTypedPathOperatorAction());
 
             return services;
@@ -45,7 +45,7 @@ namespace R5T.Costobocia.Standard
         /// <summary>
         /// Adds the <see cref="IOrganizationsStringlyTypedPathOperator"/> service.
         /// </summary>
-        public static ServiceAction<IOrganizationsStringlyTypedPathOperator> AddOrganizationsStringlyTypedPathOperatorAction(this IServiceCollection services)
+        public static IServiceAction<IOrganizationsStringlyTypedPathOperator> AddOrganizationsStringlyTypedPathOperatorAction(this IServiceCollection services)
         {
             var serviceAction = new ServiceAction<IOrganizationsStringlyTypedPathOperator>(() => services.AddOrganizationsStringlyTypedPathOperator());
             return serviceAction;
@@ -56,9 +56,9 @@ namespace R5T.Costobocia.Standard
         /// </summary>
         public static IServiceCollection AddOrganizationStringlyTypedPathOperator(this IServiceCollection services)
         {
-            services.AddDefaultOrganizationStringlyTypedPathOperator(
-                services.AddOrganizationsStringlyTypedPathOperatorAction(),
+            R5T.Costobocia.Default.IServiceCollectionExtensions.AddOrganizationStringlyTypedPathOperator(services,
                 services.AddOrganizationDirectoryNameProviderAction(),
+                services.AddOrganizationsStringlyTypedPathOperatorAction(),
                 services.AddStringlyTypedPathOperatorAction());
 
             return services;
