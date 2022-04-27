@@ -36,7 +36,7 @@ namespace R5T.Costobocia.Standard
         /// </summary>
         public static IServiceCollection AddOrganizationsStringlyTypedPathOperator(this IServiceCollection services)
         {
-            services.AddOrganizationsStringlyTypedPathOperator(
+            services.AddOrganizationsStringlyTypedPathOperator_Old(
                 services.AddStringlyTypedPathOperatorAction());
 
             return services;
@@ -56,7 +56,7 @@ namespace R5T.Costobocia.Standard
         /// </summary>
         public static IServiceCollection AddOrganizationStringlyTypedPathOperator(this IServiceCollection services)
         {
-            R5T.Costobocia.Default.IServiceCollectionExtensions.AddOrganizationStringlyTypedPathOperator(services,
+            R5T.Costobocia.Default.IServiceCollectionExtensions.AddOrganizationStringlyTypedPathOperator_Old(services,
                 services.AddOrganizationDirectoryNameProviderAction(),
                 services.AddOrganizationsStringlyTypedPathOperatorAction(),
                 services.AddStringlyTypedPathOperatorAction());
